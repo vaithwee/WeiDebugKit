@@ -7,12 +7,19 @@
 //
 
 #import "WDAppDelegate.h"
+#import <WeiDebugKit/WDDebugManger.h>
 
 @implementation WDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    WDSelfDefineAction * action = [[WDSelfDefineAction alloc] init];
+    [action setTitle:@"测试"];
+    [action setAction:^{
+        NSLog(@"测试");
+    }];
+    [[WDDebugManger sharedManager] addSelfDefineAction:action];
     return YES;
 }
 
